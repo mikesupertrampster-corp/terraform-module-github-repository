@@ -4,6 +4,11 @@ resource "github_repository" "repository" {
   topics      = var.topics
   visibility  = var.visibility
 
+  template {
+    owner      = var.template.owner
+    repository = var.template.repository
+  }
+
   has_downloads = var.has_downloads
   has_issues    = var.has_issues
   has_projects  = var.has_projects
@@ -12,6 +17,10 @@ resource "github_repository" "repository" {
   auto_init              = true
   delete_branch_on_merge = true
   vulnerability_alerts   = true
+
+  lifecycle {
+    ignore_changes = [is_template, template]
+  }
 }
 
 resource "github_branch_default" "default" {

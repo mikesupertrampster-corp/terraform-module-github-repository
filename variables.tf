@@ -56,3 +56,14 @@ variable "visibility" {
   type    = string
   default = "private"
 }
+
+variable "template" {
+  type = object({
+    owner      = string
+    repository = string
+  })
+  default = {
+    owner      = null
+    repository = null
+  }
+}
