@@ -4,9 +4,12 @@ resource "github_repository" "repository" {
   topics      = var.topics
   visibility  = var.visibility
 
-  template {
-    owner      = var.template.owner
-    repository = var.template.repository
+  dynamic "template" {
+    for_each = length(compact(values(var.template))) == 2 ? { var.template.owner = var.template.repository } : {}
+    content {
+      owner      = template.key
+      repository = template.value
+    }
   }
 
   has_downloads = var.has_downloads
