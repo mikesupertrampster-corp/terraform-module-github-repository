@@ -22,7 +22,7 @@ resource "github_repository" "repository" {
   vulnerability_alerts   = true
 
   lifecycle {
-    ignore_changes = [is_template, template]
+    ignore_changes = [is_template, template, name]
   }
 }
 
