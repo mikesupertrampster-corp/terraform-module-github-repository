@@ -3,12 +3,13 @@ resource "github_repository" "repository" {
   description = var.description
   topics      = var.topics
   visibility  = var.visibility
+  is_template = var.is_template
 
   dynamic "template" {
-    for_each = length(compact(values(var.template))) == 2 ? { var.template.owner = var.template.repository } : {}
+    for_each = flatten([compact(values(var.template))])
     content {
-      owner      = template.key
-      repository = template.value
+      owner      = var.template.owner
+      repository = var.template.repository
     }
   }
 
@@ -22,7 +23,7 @@ resource "github_repository" "repository" {
   vulnerability_alerts   = true
 
   lifecycle {
-    ignore_changes = [is_template, template, name]
+    ignore_changes = [name]
   }
 }
 

@@ -67,3 +67,8 @@ variable "template" {
     repository = null
   }
 }
+
+variable "is_template" {
+  type    = bool
+  default = false
+}
