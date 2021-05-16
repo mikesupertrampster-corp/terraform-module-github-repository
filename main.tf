@@ -32,11 +32,10 @@ resource "github_branch_default" "default" {
   branch     = var.default_branch
 }
 
-resource "github_branch_protection" "default" {
-  count             = var.visibility == "private" ? 0 : 1
-  repository_id     = github_repository.repository.id
-  pattern           = github_branch_default.default.branch
-  push_restrictions = var.push_restrictions
+resource "github_branch_protection_v3" "default" {
+  count      = var.visibility == "private" ? 0 : 1
+  repository = github_repository.repository.id
+  branch     = github_branch_default.default.branch
 
   dynamic "required_status_checks" {
     for_each = var.required_status_checks
