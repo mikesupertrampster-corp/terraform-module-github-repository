@@ -2,6 +2,8 @@
 
 Sets up a new github repository with branch protection.
 
+[![Snyk Golang Scan](https://github.com/mikesupertrampster-corp/terraform-module-github-repository/actions/workflows/snyk.yml/badge.svg)](https://github.com/mikesupertrampster-corp/terraform-module-github-repository/actions/workflows/snyk.yml) [![gitleaks](https://github.com/mikesupertrampster-corp/terraform-module-github-repository/actions/workflows/gitleaks.yml/badge.svg)](https://github.com/mikesupertrampster-corp/terraform-module-github-repository/actions/workflows/gitleaks.yml)
+
 ## Usage
 
 ### Requirements
